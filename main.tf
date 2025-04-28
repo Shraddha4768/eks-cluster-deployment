@@ -1,8 +1,18 @@
 data "aws_subnets" "available-subnets"{
     filter {
-        name = "tag:Name"
-        values = ["our-public-*"]
+    
+      name = "tag:Name"
+      values = ["our-public-*"]
+      
     }
+
+    filter {
+      name = "availabilityZone"
+      values = ["ap-south-1a", "ap-south-1b"]
+
+
+    }
+
 }
 
 resource "aws_eks_cluster" "ankit-cluster" {
